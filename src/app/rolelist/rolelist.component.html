@@ -1,0 +1,142 @@
+<app-nav> </app-nav>
+<div class="container-fluid page-body-wrapper">
+
+  <app-sidenav></app-sidenav>
+  <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h2 style="text-align: center">
+         Role List
+          </h2>
+        </div>
+        <div class="x_panel" id="myDIV">
+          <div class="x_panel" id="myDIV">
+              <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+                <div class="input-group">
+                    <input type="text" ng-model="search" class="form-control1 ng-pristine ng-untouched ng-valid ng-empty" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search for..." aria-invalid="false">
+                    <span class="input-group-btn"></span>
+                    <button class="btn btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+                  </div>
+            </div>
+          <br>
+      <a ui-sref="addBank" routerLink="/rAdd">
+        <button type="button" class="btn-round btn tableButton" style="border-radius: 30px;">Add </button>
+      </a>
+     
+    <div class="clearfix"></div>
+    <div class="table-responsive tableborder">
+      <table class="table table-bordered">
+        <thead class="tableHeader text-center">
+          <tr>
+            
+            <th style="font-size:150%; text-align: center;">Role Id </th>
+            <th style="font-size:150%; text-align: center;">Role Name</th>
+            <th style="font-size:150%; text-align: center;">Action</th>
+            <!--<th style="font-size:150%; text-align: center;">Stock Type</th>
+            <th style="font-size:150%; text-align: center;"> Stock ID </th>
+            <th style="font-size:150%; text-align: center;">Price Per KG</th>
+            <th style="font-size:150%; text-align: center;">Action</th>-->
+          </tr>
+
+        </thead>
+        <tbody class="tableContents">
+          
+          <tr  *ngFor="let role of roles | async | filter:searchText|paginate: { itemsPerPage: 5, currentPage: p }">
+            <td >{{role.roleid}}</td>
+            <td>{{role.rolename}}</td>
+            <!--<td>{{role.stocktype}}</td>
+            <td>{{role.stockid}}</td>
+            <td>{{role.priceperkg}}</td>-->
+            <td>
+            <button type="button"  class="btn-warning  fa fa-pencil" data-toggle="modal" data-target="#myModal" style=" width:35px;height:30px; "(click)='editrole(role)' ></button>
+            <button type="button"  class="btn-danger fa fa-trash" style=" width:35px;height:30px;" (click)='deleteRole(role.roleid)'></button>
+          </td>
+        
+        </tr>
+
+      <!-- <div *ngFor="let role of roles | async" style="width: 300px;">
+          <rolelist [role]='role'></rolelist>
+        </div> -->
+    </tbody>
+  </table>
+  <p style="margin-left: 40%;" >
+    <pagination-controls  class="myPagination"
+    previousLabel="Previous"
+      nextLabel="Next"
+      (pageChange)="p = $event" maxSize="4">
+    </pagination-controls>
+  </p>
+  <div class="modal fade" id="myModal" role="dialog" ng-show=" loginDisable" aria-hidden="false">
+    <div class="modal-dialog">  
+      <div style="margin-top: 75px;" class="modal-content">
+        <div class="modal-header">
+          <h4>Update Role Details</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+      <div class="modal-body">
+        <div class="x_content">
+        <br>
+
+        <form data-parsley-validate="" class="form-horizontal form-label-left " (ngSubmit)="onSubmit()" >
+          <!-- <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12"> Add Stock Price </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stockcategory" name="stockcategory"  >
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stocktype" name="stocktype"  >
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stockid" name="stockid"  >
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.priceperkg" name="priceperkg"  >
+            </div>
+            
+          </div> -->
+
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Role Name </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.rolename" name="role"  >
+            </div>
+          </div>
+          <!--<div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12"> Stock Type </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stocktype" name="stocktype"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12"> Stock Id </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stockid" name="stockid"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Price Per Kg </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.priceperkg" name="priceperkg"  >
+            </div>
+          </div>-->
+          <!-- id="role"  [(ngModel)]="role.role" name="role"  -->
+          <div class="form-group">
+            <div class="col-md-12 col-xs-12 col-md-offset-3">
+              <button style="border-radius: 30px;" class="btn-round btn1 tableButton" data-dismiss="modal" type="button">Cancel</button>
+              <button style="border-radius: 30px;" class="btn1 btn-round btn-warning" type="reset">Reset</button>
+              <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success" >Submit
+                <span class="glyphicon glyphicon-log-in"></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

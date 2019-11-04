@@ -1,0 +1,231 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+  <app-tpsidenav></app-tpsidenav>
+  <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h2 style="text-align: center;font-family: Times New Roman, Times, serif;">
+            Retailer Registration
+          </h2>
+        </div>
+        <div class="clearfix"></div>
+              <br>
+              <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-sm-4">
+                  <p>CompanyName</p>
+                  <div class="form-group tab" >
+                    <div class="" id="myDatepicker">
+                      <input type="text" [(ngModel)]="user.companyname" id="user"  name="companyname" required="required" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" capitalization="" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-sm-4">
+                  <p>GST Number</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input type="text"  [(ngModel)]="user.gstnumber" id="user"  name="gstnumber" required="required" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+           
+
+
+                
+
+                <!-- <div class="col-sm-4">
+                  <p>Grmder</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input id="address" ng-model="address" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="text" name="middle-name" required="required" capitalization="" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="col-sm-4">
+                <p> Country</p>
+                <div class="form-group ">
+                  <div class="" id="myDatepicker">
+                    
+                  <select name="country" [(ngModel)]="user.country" (change)="getCountry(user.country)">
+                      <!-- <select name="country" [(ngModel)]="user.country"> -->
+                    <!-- <select  [(ngModel)]="user.country" id="user"  name="country" required="required" placeholder="Country" style="width:250px" aria-invalid="true"> -->
+                      <option [ngValue]="undefined" disabled class="sel">Select County</option>  
+                      <option  *ngFor="let country of country1" [ngValue]="country">{{country.name}}</option>
+                    <!-- </select> -->
+                    </select>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="row">
+               
+                <div class="col-sm-4">
+                  <p>State</p>
+                  <div class="form-group  ">
+                    <div class="" id="myDatepicker">
+                     
+                      <select name="state" [(ngModel)]="user.state"  (change)="getState(user.state)">
+                          <!-- <select name="state" [(ngModel)]="user.state"> -->
+                        <!-- <select  [(ngModel)]="user.country" id="user"  name="country" required="required" placeholder="Country" style="width:250px" aria-invalid="true"> -->
+                          <option [ngValue]="undefined" disabled class="sel">Select State</option>  
+                          <option  *ngFor="let state of selectedStates" [ngValue]="state">{{state.name}}</option>
+                        <!-- </select> -->
+                        </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <p>City</p>
+                  <div class="form-group ">
+                    <div class="" id="myDatepicker">
+                      
+                      <select name="city" [(ngModel)]="user.city">
+                          <!-- <select name="city" [(ngModel)]="user.city"> -->
+                        <!-- <select  [(ngModel)]="user.country" id="user"  name="country" required="required" placeholder="Country" style="width:250px" aria-invalid="true"> -->
+                          <option [ngValue]="undefined" disabled class="sel" >Select City</option>  
+                          <option  *ngFor="let city of selectedCities" [ngValue]="city.name">{{city.name}}</option>
+                        <!-- </select> -->
+                        </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <p>Pincode</p>
+                    <div class="form-group">
+                      <div class="" id="myDatepicker">
+                        <input [(ngModel)]="user.pincode" id="user"  name="Pincode" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="number" name="middle-name" required="required" aria-invalid="true">
+                      </div>
+                    </div>
+                  </div>
+  
+              </div>
+              <div class="row">
+               
+                <div class="col-sm-4">
+                  <p>Mobile Number</p>
+                  <div class="form-group has-feedback">
+                    <div class="" id="myDatepicker3">
+                      <input [(ngModel)]="user.mobilenum" id="user"  name=" mobilenum"  required="required" maxlength="10" minlength="10" class="registration form-control col-md-7 col-xs-12 foo ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength" ng-pattern="/^(0\/91)?[6-9][0-9]{9}$/" type="text" ng-keypress="isnumber(event)" this.value="" aria-invalid="true">
+                      <span class="fa +91 form-control-feedback left" disabled="disabled" aria-hidden="false  ">+91</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <p>Alternative Number</p>
+                  <div class="form-group has-feedback">
+                    <div class="form-group" id="myDatepicker3">
+                      <input [(ngModel)]="user.alternativenum" id="user"  name=" alternativenum"  required="required" maxlength="10" minlength="10" ng-pattern="/^(0\/91)?[6-9][0-9]{9}$/" class="registration form-control col-md-7 col-xs-12 foo ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength" type="text" ng-keypress="isnumber(event)" this.value="" aria-invalid="true">
+                      <span class="fa +91 form-control-feedback left" disabled="disabled" aria-hidden="false"></span>
+                    </div>
+                  </div>
+                </div>
+         
+              <div class="col-sm-4">
+                <p>Year Of Contract</p>
+                <div class="form-group">
+                  <div class="" id="myDatepicker">
+                    <input [(ngModel)]="user.yearofcontract" id="user"  name="yearofcontract" required="required" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <p>Email ID</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input [(ngModel)]="user.emailid" id="user"  name="emailid" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required" required="required" type="email" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <p>Password</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input [(ngModel)]="user.password" id="user"  name="password"  class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required="required" type="password" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <p>Confirm Password</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input id="pwd" ng-model="confirmpassword" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required="required" type="password" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+
+               
+
+              <div class="row">
+
+                <div class="col-sm-4">
+                  <p>Licence Number</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input type="text" [(ngModel)]="user.licencenumber" id="user"  name="licencenumber" required="required" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <p>Proprietor Name</p>
+                  <div class="form-group">
+                    <div class="" id="myDatepicker">
+                      <input type="text"  [(ngModel)]="user.proprietorname" id="user"  name="proprietorname" required="required" class="registration form-control col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" capitalization="" aria-invalid="true">
+                    </div>
+                  </div>
+                </div>
+
+                
+               
+                <div class="col-sm-4">
+                  <p>Gender</p>
+                  <div class="form-group ">
+                    <div class="" id="myDatepicker">
+                        <select name="gender" [(ngModel)]="user.genders">
+                        <!-- <option value="? undefined:undefined ?" selected="selected"></option> -->
+                        <!-- <option ng-repeat="i in organizationList" value="8" class="ng-binding ng-scope">Male</option>
+                        <option ng-repeat="i in organizationList" value="9" class="ng-binding ng-scope">Female</option> -->
+                        <option [ngValue]="undefined" disabled class="sel">Select Gender</option>  
+                        <option  *ngFor="let gender of genders" [ngValue]="gender.name">{{gender.name}}</option>
+                        
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+                <div class="x_content">
+                  <br>
+                  
+                    <input type="checkbox" aria-invalid="false">
+                    <span class="file"  data-toggle="modal"   tabindex="0">I Agree
+                      <b>
+                        <u>Terms and conditions</u>
+                      </b>
+                    </span>
+                  
+                </div>
+                <div class="title_right">
+                  <div class="col-md-7 col-sm-5 col-xs-12 form-group ">
+                    <div class=" col-sm-8 col-sm-offset-9">
+                      <button class="btn-round btn btn-warning"  type="reset" style=" margin-right: 16px; ">&nbsp;&nbsp;&nbsp;Reset&nbsp;&nbsp;&nbsp;</button>
+                      <button class="btn-round btn btn-success"  type="submit" >Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>

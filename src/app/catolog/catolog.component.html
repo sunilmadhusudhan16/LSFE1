@@ -1,0 +1,127 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader ">
+          <h3 style="text-align:Center;">Catalog</h3>
+        </div>
+        <div class="x_panel" id="myDIV">
+          <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+            <div class="input-group">
+              <input type="text"  class="form-control1 " [(ngModel)]="catalogsearch" placeholder="Search for..." aria-invalid="false">
+              <span class="input-group-btn"></span>
+              <button class="btn1 btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+            </div> 
+          </div>
+          <button type="button" class="btn-round btn1 tableButton"style="border-radius: 30px;" routerLink="/addcat"> Add </button>
+          <div class="clearfix"></div>
+          <div class="table-responsive tableborder">
+            <table class="table table-striped">
+              <thead class="tableHeader text-center">
+                <tr>
+                  <th>Catalog Name</th>
+                  <th>Date From</th>
+                  <th>Date To</th>
+                  <th>Stock Type</th>
+                  <th>Price Per Kg</th>                
+                  <!-- <th>Region</th> -->
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let catalog of catalogs | async|filter:catalogsearch|paginate: { itemsPerPage: 5, currentPage: p}">
+                  <td>{{catalog.catalogname}}</td>
+                  <td>{{catalog.datefrom}}</td>
+                  <td>{{catalog.dateto}}</td>
+                  <td>{{catalog.stocktype}}</td>
+                  <td>{{catalog.priceperkg}}</td>
+                  <!-- <td>{{catalog.region}}</td> -->
+                  <td>
+                    <button type="button"  class="btn-warning  fa fa-pencil" data-toggle="modal" data-target="#myModal" style=" width:35px;height:30px; "(click)='editCatalog(catalog)' ></button>
+                    <button type="button"  class="btn-danger fa fa-trash" style=" width:35px;height:30px;" (click)='deleteCatalog(catalog.id)'></button>
+                  </td>
+                </tr>
+          
+              </tbody>
+            </table>
+            <br>
+
+            <p style="margin-left: 40%;" ><pagination-controls  class="myPagination"
+              previousLabel="Previous"
+                nextLabel="Next"
+          (pageChange)="p = $event" maxSize="4">
+        </pagination-controls></p>
+          </div>
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+              <div style="margin-top: 140px; height: 600px;" class="modal-content">
+                <div class="modal-header">
+                  <h4>Update Catalog Details</h4>
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                  <div class="x_content">
+                    <br>
+                    <form  class="form-horizontal form-label-left " (ngSubmit)="onSubmit()" >
+                      <div class="form-group">
+                        <p class="control-label col-md-4 col-xs-12" for="last-name">Catalog Name</p>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input ng-model="datefrom" type="text" required="required" class="registration form-control col-md-7 col-xs-12 " [(ngModel)]="pcatalog.catalogname" name="catalogname" >
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <p class="control-label col-md-4 col-xs-12" for="last-name">From Date</p>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input ng-model="datefrom" type="text" required="required" class="registration form-control col-md-7 col-xs-12 " [(ngModel)]="pcatalog.datefrom" name="datefrom">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <p class="control-label col-md-4 col-xs-12" for="last-name">To Date</p>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input ng-model="dateto" type="text" required="required" class="registration form-control col-md-7 col-xs-12 " [(ngModel)]="pcatalog.dateto" name="dateto">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <p class="control-label col-md-4 col-xs-12" for="last-name">Stock Type</p>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="pcatalog.stocktype" name="stocktype" >
+                                <option value="? undefined:undefined ?" selected="selected"></option>
+                                  <option [value]="stocktypes.stocktype" *ngFor="let stocktypes of droptype | async">{{stocktypes.stocktype}}</option>
+                                            
+                              </select>
+                          <!-- <input ng-model="dieselRate" type="text" required="required" class="registration form-control col-md-7 col-xs-12 " [(ngModel)]="pcatalog.stocktype" name="stocktype" > -->
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <p class="control-label col-md-4 col-xs-12" for="last-name">PricePerKg</p>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input ng-model="pricePerKg" type="text" required="required" class="registration form-control col-md-7 col-xs-12 " [(ngModel)]="pcatalog.priceperkg" name="priceperkg">
+                              </div>
+                          </div>
+                          <!-- <div class="form-group">
+                            <p class="control-label col-md-4 col-xs-12" for="last-name">Region</p>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                      <input ng-model="pricePerKg" type="text" required="required" class="registration form-control col-md-7 col-xs-12 " [(ngModel)]="pcatalog.region" name="region">
+                                  </div>
+                              </div> -->
+                            
+                            
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
+                                    <button class="btn-round btn btn-warning" data-dismiss="modal" type="reset">&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;</button>
+                                    <button type="submit" class="btn-round btn btn-success">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>

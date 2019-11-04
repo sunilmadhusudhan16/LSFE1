@@ -1,0 +1,81 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-tpsidenav></app-tpsidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+          <div class="x_panel tableborder tableHeader ">
+          
+              <br>
+    
+            <h3 style="text-align: center">
+                Collection center management Details
+            </h3>
+    </div>
+    <div class="x_panel" id="myDIV">
+      <div class="col-xs-12">
+          <!-- <table>
+              <tr *ngFor="let collect of collections">
+              <td>{{collect.companyname}}</td>
+            
+              <td>{{collect.mobilenum}}</td>
+              <td>{{collect.emailid}}</td>
+              <td>{{collect.yearofcontract}}</td>
+              </tr>
+            </table> -->
+               <div *ngFor="let collect of collections">
+                  <label>Company Name:</label>
+                   {{collect.companyname}}
+                   <br>
+                   <label>Gender:</label>
+                   {{collect.gender}}
+                   <br>
+                   <label>Country:</label>
+                   {{collect.country}}
+                   <br>
+                   <label>State:</label>
+                   {{collect.state}}
+                   <br>
+                   <label>City:</label>
+                   {{collect.city}}
+                   <br>
+                   <label>Mobile Number:</label>
+                   {{collect.mobilenum}}
+                   <br>
+                   <label>Alternative Number:</label>
+                   {{collect.alternativenum}}
+
+                   <br>
+                   <label>Year Of Contract:</label>
+                   {{collect.yearofcontract}}
+                   <br>
+                   <label>Email Id:</label>
+                   {{collect.emailid}}
+                   <br>
+                   <label>Password:</label>
+                   {{collect.password}}
+
+                   <br>
+                   <label>PinCode:</label>
+                   {{collect.pincode}}
+                   <br>
+                   <label>Licence Number:</label>
+                   {{collect.licencenumber}}
+                   <br>
+                   <label>Proprietor Name:</label>
+                   {{collect.proprietorname}}
+
+                   <br>
+                   <label>GST Number:</label>
+                   {{collect.gstnumber}}
+                   <br>
+                   <label>Active:</label>
+                   {{collect.active}}
+
+               </div>
+
+          <!-- </div> -->
+</div>
+</div>
+</div>
+</div>
+

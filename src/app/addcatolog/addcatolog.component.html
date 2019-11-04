@@ -1,0 +1,104 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+<app-sidenav></app-sidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div ui-view="" class="ng-scope" ><div class="right_col ng-scope" role="main" ng-controller="addcatalogController">
+        <div class="x_panel tableborder tableHeader">
+          <h3 style="text-align:center">Add Catalog</h3>
+        </div>
+      <br>
+        <div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_content">
+                <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>Catalog Name</p>
+                      <div class="form-group">
+                        <input  class="registration form-control2 col-md-7 col-xs-12 " required [(ngModel)]="catalog.catalogname" type="text" id="catalog"  name="catalogname">
+                      </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>Date From</p>
+                      <div class="form-group">
+                        <div class="" id="myDatepicker">
+                          <input type="date" ng-model="datefrom" required="required" class="registration form-control2 col-md-7 col-xs-12" required [(ngModel)]="catalog.datefrom" name="datefrom">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>To</p>
+                      <div class="form-group">
+                        <div class="" id="datetimepicker7">
+                        <input type="date" ng-model="dateto" required="required" class="registration form-control2 col-md-7 col-xs-12" required [(ngModel)]="catalog.dateto" name="dateto">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>Stock type</p>
+                      <div class="form-group">
+                        <div class="" id="datetimepicker7">
+                            <select  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="catalog.stocktype" name="stocktype" type="text"  >
+                                <option value="? undefined:undefined ?" selected="selected"></option>
+                                  <option [value]="pstocktypes.stocktype" *ngFor="let pstocktypes of droptype | async">{{pstocktypes.stocktype}}</option>
+                                            
+                              </select>
+                          <!-- <input type="text"  class="registration form-control2 col-md-7 col-xs-12 " required [(ngModel)]="catalog.stocktype" name="stocktype"> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>Price per Kg</p>
+                      <div class="form-group">
+                        <div class="" id="datetimepicker7">
+                          <input type="text"  class="registration form-control2 col-md-7 col-xs-12 " required [(ngModel)]="catalog.priceperkg" name="priceperkg" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <!-- <div class="col-sm-4">
+                      <p>Region</p>
+                      <div class="form-group">
+                        <div class="" id="datetimepicker7">
+                          <select class="registration form-control2 col-md-7 col-xs-12 ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"  [(ngModel)]="pcatalog.region" name="region">
+                            <option value="? undefined:undefined ?" selected="selected"></option> 
+                          </select>
+                          <input type="text"  class="registration form-control2 col-md-7 col-xs-12 " required [(ngModel)]="catalog.region" name="region" >
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+                  <br>
+                      <div class="form-group">
+                        <p class="col-md-5 control-label"></p>
+                        <div class="col-md-4">
+                          <!-- <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success">Submit </button> -->
+                          <button type="submit" class="btn1 btn-round btn-success">Submit</button>&nbsp;&nbsp;
+                         
+                          <button  class="btn1 btn-round btn-warning" routerLink="/bkcat">Back</button>
+                    
+                        </div>
+                      </div>
+                  
+                
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

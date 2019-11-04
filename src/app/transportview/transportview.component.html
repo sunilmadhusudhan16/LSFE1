@@ -1,0 +1,72 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-tpsidenav></app-tpsidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader ">
+        
+            <br>
+  
+          <h3 style="text-align: center">
+              Transport management Details
+          </h3>
+  </div>
+  <div class="x_panel" id="myDIV">
+    <div class="col-xs-12">
+       
+             <div *ngFor="let trans of transporters">
+                <label>Company Name:</label>
+                 {{trans.companyname}}
+                 <br>
+                 <label>Gender:</label>
+                 {{trans.gender}}
+                 <br>
+                 <label>Country:</label>
+                 {{trans.country}}
+                 <br>
+                 <label>State:</label>
+                 {{trans.state}}
+                 <br>
+                 <label>City:</label>
+                 {{trans.city}}
+                 <br>
+                 <label>Mobile Number:</label>
+                 {{trans.mobilenum}}
+                 <br>
+                 <label>Alternative Number:</label>
+                 {{trans.alternativenum}}
+
+                 <br>
+                 <label>Year Of Contract:</label>
+                 {{trans.yearofcontract}}
+                 <br>
+                 <label>Email Id:</label>
+                 {{trans.emailid}}
+                 <br>
+                 <label>Password:</label>
+                 {{trans.password}}
+
+                 <br>
+                 <label>PinCode:</label>
+                 {{trans.pincode}}
+                 <br>
+                 <label>Licence Number:</label>
+                 {{trans.licencenumber}}
+                 <br>
+                 <label>Proprietor Name:</label>
+                 {{trans.proprietorname}}
+
+                 <br>
+                 <label>GST Number:</label>
+                 {{trans.gstnumber}}
+                 <br>
+                 <label>Active:</label>
+                 {{trans.active}}
+
+             </div>
+
+        <!-- </div> -->
+</div>
+</div>
+</div>
+</div>

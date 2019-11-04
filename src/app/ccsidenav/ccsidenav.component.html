@@ -1,0 +1,50 @@
+<app-nav></app-nav>
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img src="assets/images/faces/face1.jpg" alt="profile image">
+          </div>
+          <div class="text-wrapper">
+            <p class="profile-name">Admin</p>
+            <div>
+              <small class="designation text-muted">Owner</small>
+              <span class="status-indicator online"></span>
+            </div>
+          </div>
+        </div>
+       </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  routerLink="/ccadmin">
+        <i class="menu-icon mdi mdi-television"></i>
+          <span class="menu-title ccolor">CC-Dashboard</span>
+      </a>
+    </li>
+          <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+        <i class="menu-icon mdi mdi-library-books"></i> 
+        <span class="menu-title"><div class="ccolor">Collection center</div></span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic1">
+        <ul class="nav flex-column sub-menu">
+         
+          <li class="nav-item">
+
+            <a class="nav-link" routerLink="/stock"><i class="menu-icon mdi mdi-drag"></i>Stock Inventory</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/location"><i class="menu-icon mdi mdi-google-maps"></i>Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/employee"><i class="menu-icon mdi mdi-account-box"></i>Employee Managment</a>
+          </li>
+        </ul>
+      </div>
+    </li> 
+    </ul>
+ </nav>
+ 

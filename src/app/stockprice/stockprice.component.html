@@ -1,0 +1,123 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+  <app-sidenav></app-sidenav>
+  <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h2 style="text-align: center">
+            Stock Price Details
+          </h2>
+        </div>
+        <div class="x_panel" id="myDIV">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+              <div class="input-group">
+                <input type="text"  class="form-control1 " [(ngModel)]="stocksearch" placeholder="Search for..." aria-invalid="false">
+                <span class="input-group-btn"></span>
+                <button class="btn1 btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+              </div> 
+            </div>
+            <button type="button" class="btn-round btn1 tableButton"style="border-radius: 30px;" routerLink="/addstp"> Add </button>
+    <div class="clearfix"></div>
+    <div class="table-responsive tableborder">
+      <table class="table table-bordered"> 
+        <thead class="tableHeader text-center">
+          <tr>
+            
+            <th style="font-size:150%; text-align: center;"> Stock Id </th>
+            <th style="font-size:150%; text-align: center;">Stock Category</th>
+            <th style="font-size:150%; text-align: center;">Stock Type</th>
+            <!-- <th style="font-size:150%; text-align: center;"> Stock ID </th> -->
+            <th style="font-size:150%; text-align: center;">Price Per KG</th>
+            <th style="font-size:150%; text-align: center;">Action</th>
+          </tr>
+
+        </thead>
+        <tbody class="tableContents">
+          
+          <tr  *ngFor="let stock of stocks | async|filter:stocksearch|paginate: { itemsPerPage: 5, currentPage: p }">
+            <td >{{stock.id}}</td>
+            <td>{{stock.stockcategory}}</td>
+            <td>{{stock.stocktype}}</td>
+            <!-- <td>{{role.stockid}}</td> -->
+            <td>{{stock.priceperkg}}</td>
+            <td>
+            <button type="button"  class="btn-warning  fa fa-pencil" data-toggle="modal" data-target="#myModal" style=" width:35px;height:30px; "(click)='editStock(stock)' ></button>
+            <button type="button"  class="btn-danger fa fa-trash" style=" width:35px;height:30px;" (click)='deleteStock(stock.id)'></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+
+    <p style="margin-left: 40%;" >
+      <pagination-controls  class="myPagination"
+      previousLabel="Previous"
+        nextLabel="Next"
+        (pageChange)="p = $event" maxSize="4">
+      </pagination-controls>
+    </p>
+
+    <div class="modal fade" id="myModal" role="dialog" ng-show=" loginDisable" aria-hidden="false">
+      <div class="modal-dialog">  
+        <div style="margin-top: 75px;" class="modal-content">
+          <div class="modal-header">
+            <h4>Update Stock Details</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+      <div class="modal-body">
+        <div class="x_content">
+        <br>
+
+        <form  class="form-horizontal form-label-left " (ngSubmit)="onSubmit()" >
+          
+          
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Stock Category </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="pstock.stockcategory" name="stockcategory"  class="registration form-control2 col-md-7 col-xs-12 " >
+                    <option value="? undefined:undefined ?" selected="selected"></option>
+                      <option [value]="stockcat.stockcategory" *ngFor="let stockcat of dropcat | async">{{stockcat.stockcategory}}</option>
+                                
+                  </select>
+              <!-- <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="pstock.stockcategory" name="stockcategory"  > -->
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12"> Stock Type </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <!-- <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="pstock.stocktype" name="stocktype"  > -->
+              <select  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="pstock.stocktype" name="stocktype"  class="registration form-control2 col-md-7 col-xs-12 " >
+                  <option value="? undefined:undefined ?" selected="selected"></option>
+                    <option [value]="stocktypes.stocktype" *ngFor="let stocktypes of droptype | async">{{stocktypes.stocktype}}</option>
+                              
+                </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Price Per Kg </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="pstock.priceperkg" name="priceperkg"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 col-xs-12 col-md-offset-3">
+              <button style="border-radius: 30px;" class="btn-round btn1 tableButton" data-dismiss="modal" type="button">Cancel</button>
+              <button style="border-radius: 30px;" class="btn1 btn-round btn-warning" type="reset">Reset</button>
+              <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success" >Submit
+                <span class="glyphicon glyphicon-log-in"></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

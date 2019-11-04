@@ -1,0 +1,74 @@
+<div class="container-fluid page-body-wrapper">
+  <app-marketingsidenav></app-marketingsidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="x_panel tableborder tableHeader">
+        <h1 style="text-align:Center;"> Create Team </h1>
+      </div>
+      <br>
+      <div class="x_panel">
+        <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+         
+          <div class="form-group">
+            <h4 class="col-md-4 control-label">Team Name  </h4>
+            <div class="col-md-4 inputGroupContainer">
+             <select class="registration form-control2 col-md-12 col-xs-12" [(ngModel)]="role.teamname" name="Marketingtypes" class="registration form-control2 col-md-12 col-xs-12 ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+              <option [value]="listd.marketingtypes" *ngFor="let listd of drops | async">{{listd.marketingtypes}}</option>
+             </select>
+            </div>
+          </div>
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Team size</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.teamsize" type="text" id="role"  name="teamsize" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Task completed</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.taskcompleted" type="text" id="role"  name="taskcompleted" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Team performance</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.teamperformance" type="text" id="role"  name="teamperformance" >
+              </div>
+            </div>
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Team result</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.teamresult" type="text" id="role"  name="teamresult" >
+              </div>
+            </div>
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Team rating</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.teamrating" type="text" id="role"  name="teamrating" >
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <p class="col-md-5 control-label"></p>
+              <div class="col-md-4">
+                <!-- <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success">Submit </button> -->
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a routerLink="/back">
+                <button style="border-radius: 30px;" class="btn1 btn-round btn-warning">Back</button>
+              </a>
+              </div>
+            </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

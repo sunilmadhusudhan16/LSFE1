@@ -1,0 +1,72 @@
+
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-sidenav></app-sidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="x_panel tableborder tableHeader">
+        <h1 style="text-align:Center;"> Add Stock Price </h1>
+      </div>
+      <br>
+      <div class="x_panel">
+        <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+         
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Stock Category</h4>
+              <div class="col-md-4 inputGroupContainer">
+                  <select  class="registration form-control2"  [(ngModel)]="stock.stockcategory" name="stockcategory">
+                      <option value="? undefined:undefined ?" selected="selected"></option>
+                        <option [value]="pstockcat.stockcategory" *ngFor="let pstockcat of dropcat | async">{{pstockcat.stockcategory}}</option>
+                                  
+                    </select>
+                
+                <!-- <input class="registration form-control2 " required [(ngModel)]="stock.stockcategory" type="text" id="role"  name="stockcategory" > -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Stock Type</h4>
+              <div class="col-md-4 inputGroupContainer">
+                  <select  class="registration form-control2 "  [(ngModel)]="stock.stocktype" name="stocktype" type="text"  >
+                      <option value="? undefined:undefined ?" selected="selected"></option>
+                        <option [value]="pstocktypes.stocktype" *ngFor="let pstocktypes of droptype | async">{{pstocktypes.stocktype}}</option>
+                                  
+                    </select>
+                
+                <!-- <input class="registration form-control2 " required [(ngModel)]="stock.stocktype" type="text" id="role"  name="stocktype" > -->
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <h4 class="col-md-4 control-label">Stock Id</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.stockid" type="text" id="role"  name="stockid" >
+              </div>
+            </div> -->
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Price Per Kg</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="stock.priceperkg" type="text" id="role"  name="priceperkg" >
+              </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+              <p class="col-md-5 control-label"></p>
+              <div class="col-md-4">
+                <!-- <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success">Submit </button> -->
+                <button type="submit" class="btn btn-success">Submit</button>
+                
+                <button style="border-radius: 30px;" class="btn1 btn-round btn-warning" routerLink="/bkstk">Back</button>
+            
+              </div>
+            </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

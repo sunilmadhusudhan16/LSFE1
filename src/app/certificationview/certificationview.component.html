@@ -1,0 +1,73 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-tpsidenav></app-tpsidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader ">
+        
+            <br>
+  
+          <h3 style="text-align: center">
+              Certification management Details
+          </h3>
+  </div>
+  <div class="x_panel" id="myDIV">
+    <div class="col-xs-12">
+        
+             <div *ngFor="let cert of certifications">
+                <label>Company Name:</label>
+                 {{cert.companyname}}
+                 <br>
+                 <label>Gender:</label>
+                 {{cert.gender}}
+                 <br>
+                 <label>Country:</label>
+                 {{cert.country}}
+                 <br>
+                 <label>State:</label>
+                 {{cert.state}}
+                 <br>
+                 <label>City:</label>
+                 {{cert.city}}
+                 <br>
+                 <label>Mobile Number:</label>
+                 {{cert.mobilenum}}
+                 <br>
+                 <label>Alternative Number:</label>
+                 {{cert.alternativenum}}
+
+                 <br>
+                 <label>Year Of Contract:</label>
+                 {{cert.yearofcontract}}
+                 <br>
+                 <label>Email Id:</label>
+                 {{cert.emailid}}
+                 <br>
+                 <label>Password:</label>
+                 {{cert.password}}
+
+                 <br>
+                 <label>PinCode:</label>
+                 {{cert.pincode}}
+                 <br>
+                 <label>Licence Number:</label>
+                 {{cert.licencenumber}}
+                 <br>
+                 <label>Proprietor Name:</label>
+                 {{cert.proprietorname}}
+
+                 <br>
+                 <label>GST Number:</label>
+                 {{cert.gstnumber}}
+                 <br>
+                 <label>Active:</label>
+                 {{cert.active}}
+
+             </div>
+
+        <!-- </div> -->
+</div>
+</div>
+</div>
+</div>
+

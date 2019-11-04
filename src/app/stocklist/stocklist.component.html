@@ -1,0 +1,136 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+  <app-ccsidenav></app-ccsidenav>
+  <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h2 style="text-align: center;font-family: Times New Roman, Times, serif;">
+            Stock Details
+          </h2>
+        </div>
+        <div class="x_panel" id="myDIV">
+          <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+            <div class="input-group">
+                <input type="text" ng-model="search" class="form-control1 ng-pristine ng-untouched ng-valid ng-empty" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search for..." aria-invalid="false">
+                <span class="input-group-btn"></span>
+                <button class="btn btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+              </div>
+        </div>
+      
+      <a ui-sref="addBank" routerLink="/Add">
+        <button type="button" class="btn btn-success"><i class="glyphicon glyphicon-plus" ></i>Add Stock</button>
+      </a>
+ 
+    <div class="table-responsive tableborder">
+      <table class="table table-striped">
+        <thead class="tableHeader text-center">
+          <tr>
+            
+            <th style="text-align: center;color:#ce4902;">Stock Id</th>
+            <th style="text-align: center;color:#ce4902;">Itemtype</th>
+            <th style="text-align: center;color:#ce4902;">Itemcategory</th>
+            <th style="text-align: center;color:#ce4902;">Quantity</th>
+            <th style="text-align: center;color:#ce4902;">Quality</th>
+            <th style="text-align: center;color:#ce4902;">Price</th>
+            <th style="text-align: center;color:#ce4902;">Action</th>
+          </tr>
+
+        </thead>
+        <tbody class="tableContents">
+          
+          <tr  *ngFor="let role of roles | async | filter:searchText">
+            <td >{{role.id}}</td>
+            <td>{{role.itemtype}}</td>
+            <td>{{role.itemcategory}}</td>
+            <td>{{role.quantity}}</td>
+            <td>{{role.quality}}</td>
+            <td>{{role.price}}</td>
+           
+            <td>
+              <button type="button"  class="btn-secondary fas fa-edit" data-toggle="modal" data-target="#myModal" style=" width:35px;height:30px;margin-right: 16px;background:#0f459e" (click)='editrole(role)'></button>
+                                       
+              <button type="button"  class="btn-danger fa fa-trash" style=" width:35px;height:30px;" (click)='deleteRole(role.id)'></button>
+          </td>
+        
+        </tr>
+    
+    </tbody>
+  </table>
+  <ul style="margin-left: 40%;" class="pagination-md pagination ng-isolate-scope ng-not-empty ng-valid" total-items="rolelength" ng-model="currentPage" max-size="5" boundary-links="true" items-per-page="numPerPage" aria-invalid="false">
+      <!-- ngIf: boundaryLinks --><li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}" class="ng-scope disabled"><a href="" ng-click="selectPage(1)" class="ng-binding">First</a></li><!-- end ngIf: boundaryLinks -->
+      <!-- ngIf: directionLinks --><li ng-if="directionLinks" ng-class="{disabled: noPrevious()}" class="ng-scope disabled"><a href="" ng-click="selectPage(page - 1)" class="ng-binding">Previous</a></li><!-- end ngIf: directionLinks -->
+      <!-- ngRepeat: page in pages track by $index --><li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="ng-scope active"><a href="" ng-click="selectPage(page.number)" class="ng-binding">1</a></li><!-- end ngRepeat: page in pages track by $index --><li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="ng-scope"><a href="" ng-click="selectPage(page.number)" class="ng-binding">2</a></li><!-- end ngRepeat: page in pages track by $index --><li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="ng-scope"><a href="" ng-click="selectPage(page.number)" class="ng-binding">3</a></li><!-- end ngRepeat: page in pages track by $index -->
+      <!-- ngIf: directionLinks --><li ng-if="directionLinks" ng-class="{disabled: noNext()}" class="ng-scope"><a href="" ng-click="selectPage(page + 1)" class="ng-binding">Next</a></li><!-- end ngIf: directionLinks -->
+      <!-- ngIf: boundaryLinks --><li ng-if="boundaryLinks" ng-class="{disabled: noNext()}" class="ng-scope"><a href="" ng-click="selectPage(totalPages)" class="ng-binding">Last</a></li><!-- end ngIf: boundaryLinks -->
+  </ul>
+  
+  <div class="modal fade" id="myModal" role="dialog" ng-show=" loginDisable" aria-hidden="false">
+    <div class="modal-dialog">  
+      <div style="margin-top: 120px;" class="modal-content">
+        <div class="modal-header">
+          <h4>Update Stock Details</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+       
+      <div class="modal-body">
+        <div class="x_content">
+        <br>
+
+        <form data-parsley-validate="" class="form-horizontal form-label-left " (ngSubmit)="onSubmit()" >
+         
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Item Type</p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.itemtype" name="stockcategory"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Item Category </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.itemcategory" name="stocktype"  class="registration form-control2 col-md-7 col-xs-12 ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+                <option [value]="dlistl.stockcategory" *ngFor="let dlistl of drops | async">{{dlistl.stockcategory}}</option>
+                            
+              </select>
+               
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">quantity</p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.quantity" name="stockid"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">quality</p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.quality" name="priceperkg"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">price</p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.price" name="priceperkg"  >
+            </div>
+          </div>
+          <!-- id="role"  [(ngModel)]="role.role" name="role"  -->
+          <div class="form-group">
+            <div class="col-md-12 col-xs-12 col-md-offset-3">
+              <button style="border-radius: 30px;" class="btn-round btn1 tableButton" data-dismiss="modal" type="button">Cancel</button>
+              <button style="border-radius: 30px;" class="btn1 btn-round btn-warning" type="reset">Reset</button>
+              <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success" >Submit
+                <span class="glyphicon glyphicon-log-in"></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

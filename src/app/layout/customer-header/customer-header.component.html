@@ -1,0 +1,26 @@
+<mat-toolbar class="header">
+<mat-toolbar-row>
+  <a href="#"><span><img src="assets/images/LETlogo.png"></span></a>
+  <span class="example-spacer"></span>
+  <div class="menu-buttons">
+    <button mat-button [matMenuTriggerFor]="menu"><b>Sanjana</b></button>
+    &nbsp;
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon> My Profile
+      </button>
+     
+      <button mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>Log Out
+      </button>
+    </mat-menu>
+    <button mat-button ="menu"><a routerLink="/Orders" routerLinkActive="active"><b>My Orders</b></a></button>
+    &nbsp;
+
+    <a routerLink="/customer-cart" routerLinkActive="active">                             
+        <mat-icon matBadge="5" matBadgeColor="warn">shopping_cart</mat-icon>
+        </a>
+</div>
+</mat-toolbar-row>
+</mat-toolbar>
+

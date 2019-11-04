@@ -1,0 +1,77 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-tpsidenav></app-tpsidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+<div class="x_panel tableborder tableHeader ">
+          
+            <br>
+  
+          <h3 style="text-align: center">
+              Collection center management
+          </h3>
+  </div>
+  <div class="x_panel" id="myDIV">
+       <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+          <div class="form-group">
+              <input type="text"  class="form-control1 " [(ngModel)]="stocksearch" placeholder="Search for..." aria-invalid="false">
+              <span class="input-group-btn"></span>
+                <button class="btn1 btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+              
+          </div>
+      </div>
+      <br>
+    <button type="button" class="btn btn-round tableButton btn actve ng-pristine ng-untouched ng-valid ng-not-empty" (click)="activeness(val ='1')" aria-invalid="false"> Active  </button>
+    <button type="button" class="btn btn-round tableButton ng-pristine ng-untouched ng-valid ng-empty"  (click)="activeness(val ='0')" aria-invalid="false"> Inactive </button>
+     <div class="clearfix"></div>
+     <div class="form-group">
+      <input type="hidden" class="form-control" placeholder="Search By Name"
+              style="width:300px" [(ngModel)]="searchText" />
+  </div>
+    <div class="table-responsive tableborder" ng-show="Myvar" aria-hidden="false">
+      <table class="table table-striped">
+        <thead class="tableHeader">
+          <tr>
+            <th>Company Name</th>
+            <th>Mobile Number</th>
+            <th>Email ID</th>
+            <th>Year Of Contract</th>
+            <th>Status</th>
+            <th>Action</th>
+          
+          </tr>
+        </thead>
+        <tbody class="tableContents">
+
+        
+        <tr *ngFor="let user of collections1 |filter:stocksearch | grdFilter: {active: searchText} |paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>{{user.companyname}}</td>
+            <td>{{user.mobilenum}}</td>
+            <td>{{user.emailid}}</td>
+            <td>{{user.yearofcontract}}</td>
+            
+            <td>
+                <span  type="button" class="btn btn-round tableButton btn actve ng-pristine ng-untouched ng-valid ng-not-empty" *ngIf='user.active==0' (click)='activeuser(user.id, user.active)'>Inactive</span>
+              
+                <span type="button" class="btn btn-round tableButton btn actve ng-pristine ng-untouched ng-valid ng-not-empty"  *ngIf='user.active==1' (click)='activeuser(user.id, user.active)'>Active</span>
+              </td>
+
+    
+
+              <td>
+                  <button type="button" class="btn-round btn btn-info" (click)="getDetails(user.id)" style="width:100px;"> View </button> 
+              </td>
+             
+        </tr>
+       
+        </tbody>
+      </table>
+      <p style="margin-left: 40%;" >
+        <pagination-controls  class="myPagination"
+        previousLabel="Previous"
+          nextLabel="Next"
+          (pageChange)="p = $event" maxSize="4">
+        </pagination-controls>
+      </p>
+
+    

@@ -1,0 +1,30 @@
+.card{
+    width:auto;
+    margin:1.5em 1.5em 1.5em 1.5em;
+}
+  mat-card-title{
+      font-size: 35px;
+      /* text-decoration: underline; */
+  }
+  
+ .fa-inr
+ {
+     font-size: 20px;
+     margin-left: 25%;
+
+ }
+ .price
+ {
+    font-size: 20px;
+    /* margin-left: 25%; */
+}
+.buttons{
+    margin-right:5px;
+}
+.trackButton{
+    float:right;
+}
+
+
+
+  

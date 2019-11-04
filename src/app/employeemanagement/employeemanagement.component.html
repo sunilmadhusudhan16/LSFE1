@@ -1,0 +1,129 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+    <app-ccsidenav></app-ccsidenav>
+    <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="x_panel tableborder tableHeader">
+            <h2 style="text-align: center;font-family: Times New Roman, Times, serif;">
+                Employee List
+            </h2>
+          </div>
+          <div class="x_panel" id="myDIV">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+              <div class="input-group">
+                  <input type="text" ng-model="search" class="form-control1 ng-pristine ng-untouched ng-valid ng-empty" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search for..." aria-invalid="false">
+                  <span class="input-group-btn"></span>
+                  <button class="btn btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+                </div>
+          </div>
+          
+          <button type="button" class="btn btn-danger"ng-model="Myshow" href="" ng-click="showme=true" aria-invalid="false"> Inactive </button>
+          <button type="button" class="btn btn-success"ng-model="Myshow" href="" ng-click="showme=true" aria-invalid="false"> Inactive </button>
+          <div class="table-responsive tableborder">
+          <table class="table table-striped">
+          <thead class="tableHeader text-center">
+            <tr>
+           
+            <th style="text-align: center;color:#ce4902;">Employee ID </th>
+            <th style="text-align: center;color:#ce4902;">Employee Name </th>
+            <th style="text-align: center;color:#ce4902;">Gender</th>
+            <th style="text-align: center;color:#ce4902;">Date of Birth </th>
+            <th style="text-align: center;color:#ce4902;">Country</th>
+            <th style="text-align: center;color:#ce4902;">State</th>
+            <th style="text-align: center;color:#ce4902;">City</th>
+            <th style="text-align: center;color:#ce4902;">Employee Type</th>
+            <th style="text-align: center;color:#ce4902;">Address</th>
+            <th style="text-align: center;color:#ce4902;">Email</th>
+            <th style="text-align: center;color:#ce4902;">Password</th>
+            <th style="text-align: center;color:#ce4902;">Year Of Contract</th>
+            <th style="text-align: center;color:#ce4902;">Mobile Number</th>
+            <th style="text-align: center;color:#ce4902;">Action</th>
+
+            </tr>
+  
+          </thead>
+          <tbody class="tableContents">
+            
+            <tr  *ngFor="let Empreg1 of ereg | async | filter:searchText">
+              <td >{{Empreg1.id}}</td>
+              <td>{{Empreg1.firstname}}</td>
+              <td>{{Empreg1.gender}}</td>
+              <td>{{Empreg1.dob}}</td>
+              <td>{{Empreg1.country}}</td>
+              <td>{{Empreg1.state}}</td>
+              <td>{{Empreg1.city}}</td>
+              <td>{{Empreg1.employeetype}}</td>
+              <td>{{Empreg1.address}}</td>
+              <td>{{Empreg1.email}}</td>
+              <td>{{Empreg1.password}}</td>
+              <td>{{Empreg1.yoc}}</td>
+              <td>{{Empreg1.mobile}}</td>
+              <td>
+                <button type="button"  class="btn btn-success glyphicon glyphicon-ok"  style="margin-right: 16px">Active</button>
+                <button type="button" class="glyphicon glyphicon-ok" class="btn btn-danger">InActive</button>
+            </td>
+           </tr>
+       </tbody>
+    </table>
+    <ul style="margin-left: 40%;" class="pagination-md pagination ng-isolate-scope ng-not-empty ng-valid" total-items="rolelength" ng-model="currentPage" max-size="5" boundary-links="true" items-per-page="numPerPage" aria-invalid="false">
+      <li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}" class="ng-scope disabled"><a href="" ng-click="selectPage(1)" class="ng-binding">First</a></li><!-- end ngIf: boundaryLinks -->
+      <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}" class="ng-scope disabled"><a href="" ng-click="selectPage(page - 1)" class="ng-binding">Previous</a></li><!-- end ngIf: directionLinks -->
+      <li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="ng-scope active"><a href="" ng-click="selectPage(page.number)" class="ng-binding">1</a></li><!-- end ngRepeat: page in pages track by $index --><li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="ng-scope"><a href="" ng-click="selectPage(page.number)" class="ng-binding">2</a></li><!-- end ngRepeat: page in pages track by $index --><li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="ng-scope"><a href="" ng-click="selectPage(page.number)" class="ng-binding">3</a></li><!-- end ngRepeat: page in pages track by $index -->
+      <li ng-if="directionLinks" ng-class="{disabled: noNext()}" class="ng-scope"><a href="" ng-click="selectPage(page + 1)" class="ng-binding">Next</a></li><!-- end ngIf: directionLinks -->
+      <li ng-if="boundaryLinks" ng-class="{disabled: noNext()}" class="ng-scope"><a href="" ng-click="selectPage(totalPages)" class="ng-binding">Last</a></li><!-- end ngIf: boundaryLinks -->
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+ 
+  <div class="wrapper">
+    <div class="table-responsive tableborder">
+      <table class="table table-striped">
+      <thead class="tableHeader text-center">
+        <tr>
+       
+        <th style="text-align: center;color:#ce4902;">Employee ID </th>
+        <th style="text-align: center;color:#ce4902;">Employee Name </th>
+        <th style="text-align: center;color:#ce4902;">Gender</th>
+        <th style="text-align: center;color:#ce4902;">Date of Birth </th>
+        <th style="text-align: center;color:#ce4902;">Country</th>
+        <th style="text-align: center;color:#ce4902;">State</th>
+        <th style="text-align: center;color:#ce4902;">City</th>
+        <th style="text-align: center;color:#ce4902;">Employee Type</th>
+        <th style="text-align: center;color:#ce4902;">Address</th>
+        <th style="text-align: center;color:#ce4902;">Email</th>
+        <th style="text-align: center;color:#ce4902;">Password</th>
+        <th style="text-align: center;color:#ce4902;">Year Of Contract</th>
+        <th style="text-align: center;color:#ce4902;">Mobile Number</th>
+        <th style="text-align: center;color:#ce4902;">Action</th>
+
+        </tr>
+
+      </thead>
+      <tbody class="tableContents">
+        
+        <tr  *ngFor="let Empreg1 of ereg | async | filter:searchText">
+          <td >{{Empreg1.id}}</td>
+          <td>{{Empreg1.firstname}}</td>
+          <td>{{Empreg1.gender}}</td>
+          <td>{{Empreg1.dob}}</td>
+          <td>{{Empreg1.country}}</td>
+          <td>{{Empreg1.state}}</td>
+          <td>{{Empreg1.city}}</td>
+          <td>{{Empreg1.employeetype}}</td>
+          <td>{{Empreg1.address}}</td>
+          <td>{{Empreg1.email}}</td>
+          <td>{{Empreg1.password}}</td>
+          <td>{{Empreg1.yoc}}</td>
+          <td>{{Empreg1.mobile}}</td>
+          <td>
+            <button type="button"  class="btn btn-success glyphicon glyphicon-ok"  style="margin-right: 16px">Active</button>
+            <button type="button" class="glyphicon glyphicon-ok" class="btn btn-danger">InActive</button>
+        </td>
+       </tr>
+   </tbody>
+</table>
+</div>  
+  </div>
+

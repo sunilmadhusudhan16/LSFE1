@@ -1,0 +1,40 @@
+<app-nav> </app-nav>
+   <div class="container-fluid page-body-wrapper">
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h1 style="text-align:Center;"> Add Role </h1>
+        </div>
+        <br>
+        <div class="x_panel">
+          <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+           
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Role Name</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  
+                  <input class="registration form-control2 " required [(ngModel)]="role.rolename" type="text" id="role"  name="rolename" >
+                </div>
+              </div>
+  
+             
+
+  
+              <br>
+              <div class="form-group">
+                <p class="col-md-5 control-label"></p>
+                <div class="col-md-4">
+                  <!-- <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success">Submit </button> -->
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button  class="btn1 btn-round btn-warning" routerLink="/bkrole">Back</button>
+              </div>
+            </div>
+            
+          
+          </form>
+       
+      </div>
+    </div>
+  </div>
+</div>

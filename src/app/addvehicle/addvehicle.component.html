@@ -1,0 +1,84 @@
+<app-nav></app-nav>
+
+   <div class="container-fluid page-body-wrapper">
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <br>
+
+          <h1 style="text-align:Center;"> 
+            Vehicle Category
+           </h1>
+        </div>
+       
+       
+        <br>
+        <div class="x_panel">
+          <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+           
+            
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Vehicle Owner Name</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  
+                  <input class="registration form-control2 " required [(ngModel)]="vehicle.vehicleownername" type="text" id="vehicle"  name="vehicleownername" >
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Vehicle Registration Number</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  
+                  <input class="registration form-control2 " required [(ngModel)]="vehicle.vehicleregno" type="text" id="vehicle"  name="vehicleregno" >
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Vehicle Registration Date</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  
+                  <input class="registration form-control2 " required [(ngModel)]="vehicle.vehicleregdate" type="text" id="vehicle"  name="vehicleregdate" >
+                </div>
+              </div>
+                <div class="form-group">
+                  <h4 class="col-md-4 control-label">Insurance No</h4>
+                  <div class="col-md-4 inputGroupContainer">
+                    
+                    <input class="registration form-control2 " required [(ngModel)]="vehicle.insuranceno" type="text" id="vehicle"  name="insuranceno" >
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="col-md-4 control-label">Insurance Exp Date</h4>
+                    <div class="col-md-4 inputGroupContainer">
+                      
+                      <input class="registration form-control2 " required [(ngModel)]="vehicle.insuranceexpdate" type="text" id="vehicle"  name="insuranceexpdate" >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="col-md-4 control-label">Vehicle category</h4>
+                    <div class="col-md-4 inputGroupContainer">
+                      
+                      <input class="registration form-control2 " required [(ngModel)]="vehicle.vehiclecategory" type="text" id="vehicle"  name=" vehiclecategory" >
+                    </div>
+                  </div>
+                  
+              
+                  <br>
+                  <div class="form-group">
+                    <p class="col-md-5 control-label"></p>
+                    <div class="col-md-4">
+                      <!-- <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success">Submit </button> -->
+                      <button type="submit" class="btn btn-success">Submit</button>
+                      <button  class="btn1 btn-round btn-warning" routerLink="/bkvehicle">Back</button>
+                  </div>
+                </div>
+          
+          
+          </form>
+       
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+<div class="container-fluid page-body-wrapper">
+
+  <app-marketingsidenav></app-marketingsidenav>
+  <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h2 style="text-align: center">
+             Marketing
+          </h2>
+        </div>
+        <div class="x_panel" id="myDIV">
+            <div class="x_panel" id="myDIV">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search" >
+                  <div class="input-group">
+                      <input type="text" ng-model="search" class="form-control1 ng-pristine ng-untouched ng-valid ng-empty" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search for..." aria-invalid="false">
+                      <span class="input-group-btn"></span>
+                      <button class="btn btn-default tableHeader" type="button" style="color: white; float: right;">Search!</button>
+                    </div>
+              </div>
+            <br>
+      <a ui-sref="addBank" routerLink="/addmark">
+        <button type="button" class="btn-round btn tableButton" style="border-radius: 30px;">Create </button>
+      </a>
+    <div class="clearfix"></div>
+    <div class="table-responsive tableborder">
+      <table class="table table-bordered">
+        <thead class="tableHeader text-center">
+          <tr>
+            
+            <th style="font-size:100%; text-align: center;">Id </th>
+            <th style="font-size:100%; text-align: center;">Team name</th>
+            <th style="font-size:100%; text-align: center;">Team size</th>
+            <th style="font-size:100%; text-align: center;">Task completed</th>
+            <th style="font-size:100%; text-align: center;">Team performance</th>
+            <th style="font-size:100%; text-align: center;">Team result</th>
+            <th style="font-size:100%; text-align: center;">Team rating</th>
+            <th style="font-size:100%; text-align: center;">Action</th>
+          </tr>
+
+        </thead>
+        <tbody class="tableContents">
+          
+          <tr  *ngFor="let role of roles | async | filter:searchText">
+            <td >{{role.id}}</td>
+            <td>{{role.teamname}}</td>
+            <td>{{role.teamsize}}</td>
+            <td>{{role.teamperformance}}</td>
+            <td>{{role.teamresult}}</td>
+            <td>{{role.taskcompleted}}</td>
+            <td>{{role.teamrating}}</td>
+            <td>
+            <button type="button"  class="btn-warning  fa fa-pencil" data-toggle="modal" data-target="#myModal" style=" width:35px;height:30px; "(click)='editrole(role)' ></button>
+            <button type="button"  class="btn-danger fa fa-trash" style=" width:35px;height:30px;" (click)='deleteRole(role.id)'></button>
+          </td>
+        
+        </tr>
+
+      <!-- <div *ngFor="let role of roles | async" style="width: 300px;">
+          <rolelist [role]='role'></rolelist>
+        </div> -->
+    </tbody>
+  </table>
+  <p style="margin-left: 40%;" >
+    <pagination-controls  class="myPagination"
+    previousLabel="Previous"
+      nextLabel="Next"
+      (pageChange)="p = $event" maxSize="4">
+    </pagination-controls>
+  </p>
+  <div class="modal fade" id="myModal" role="dialog" ng-show=" loginDisable" aria-hidden="false">
+    <div class="modal-dialog">  
+      <div style="margin-top: 120px;" class="modal-content">
+        <div class="modal-header">
+          <h4>Create Team</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+      <div class="modal-body">
+        <div class="x_content">
+        <br>
+
+        <form data-parsley-validate="" class="form-horizontal form-label-left " (ngSubmit)="onSubmit()" >
+          <!-- <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12"> Add Stock Price </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stockcategory" name="stockcategory"  >
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stocktype" name="stocktype"  >
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.stockid" name="stockid"  >
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.priceperkg" name="priceperkg"  >
+            </div>
+            
+          </div> -->
+
+          
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Team Name  </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+             <select class="registration form-control2 col-md-7 col-xs-12" [(ngModel)]="prole.teamname" name="Marketingtypes" class="registration form-control2 col-md-7 col-xs-12 ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+              <option [value]="listd.marketingtypes" *ngFor="let listd of drops | async">{{listd.marketingtypes}}</option>
+             </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12"> Team size </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.teamsize" name="teamsize"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Team performance </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.teamperformance" name="teamperformance"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Task completed </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.taskcompleted" name="taskcompleted"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Team result </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.teamresult" name="teamresult"  >
+            </div>
+          </div>
+          <div class="form-group">
+            <p class="control-label col-md-4 col-sm-3 col-xs-12">Team rating </p>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input  type="text"  class="registration form-control2 col-md-7 col-xs-12 "  [(ngModel)]="prole.teamrating" name="teamrating"  >
+            </div>
+          </div>
+          <!-- id="role"  [(ngModel)]="role.role" name="role"  -->
+          <div class="form-group">
+            <div class="col-md-12 col-xs-12 col-md-offset-3">
+              <button style="border-radius: 30px;" class="btn-round btn1 tableButton" data-dismiss="modal" type="button">Cancel</button>
+              <button style="border-radius: 30px;" class="btn1 btn-round btn-warning" type="reset">Reset</button>
+              <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success" >Submit
+                <span class="glyphicon glyphicon-log-in"></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

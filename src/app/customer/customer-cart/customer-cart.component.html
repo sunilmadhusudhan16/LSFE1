@@ -1,0 +1,66 @@
+<app-customer-header></app-customer-header>
+
+<mat-card class="card">
+  <mat-card-header>
+    <h5>My Cart<span>(1)</span></h5>
+  </mat-card-header>
+  <br>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-sm-3">
+        <img src="../../../assets/images/chk4.jpg">
+        <br>
+        <br>
+        <button mat-stroked-button color="primary">Remove from Cart</button>
+      </div>
+      <div class="col-sm-3">
+        <h4>Chicken Leg Piece</h4>
+        <!-- <h5>Retialer:Suguna Chicken</h5> -->
+        <h6>Quantity: </h6>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">indeterminate_check_box</mat-icon>
+        </button>
+        <input matInput class="quntityNumber" value="1">
+        <!-- <input type="text" class="quntityNumber" value="1"> -->
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">local_hospital</mat-icon>
+        </button>
+        <br>
+        <br>
+        <!-- <h6>Quality:</h6> -->
+        <!-- <div style="background-color: rgb(194, 215, 253); width:70%">
+        <select>
+            <option value="A">A Quality</option>
+            <option value="B">B Quality</option>
+            <option value="C">C Quality</option>
+            <option value="Normal">Normal Quality </option>
+          </select>
+        </div> -->
+        <mat-form-field>
+            <mat-label>Select a Quality</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option>None</mat-option>
+              <mat-option value="A">A Quality</mat-option>
+              <mat-option value="B">B Quality</mat-option>
+              <mat-option value="C">C Quality</mat-option>
+              <mat-option value="Normal">Normal Price</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>{{selected}} Quality</p>
+      </div>
+      <div class="col-sm-3">
+          <h5>Total Amount:200:00</h5>
+          <!-- <h5>Order Date: 06-05-2019</h5> -->
+      </div>
+      <div class="col-sm-3">
+        <button class="buttons" mat-raised-button><b>Continue</b></button>
+        <button class="buttons" mat-raised-button color="warn"><b>Place Order</b></button>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    
+  </mat-card-footer>
+</mat-card>
+
+<app-customer-footer></app-customer-footer>

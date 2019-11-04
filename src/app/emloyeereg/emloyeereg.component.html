@@ -1,0 +1,120 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-ccsidenav></app-ccsidenav>
+  <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h2 style="text-align: center;font-family: Times New Roman, Times, serif;">
+            Collection Center Employee Registretion
+          </h2>
+        </div>
+        <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xs-8 col-sm-8 col-md-8">
+              <div class="form-group">
+      <input type="text" name="firstname" id="firstname" [(ngModel)]="er.firstname" class="form-control input-sm" placeholder="First Name">
+     
+              </div>
+          </div>
+          <div class="col-xs-8 col-sm-8 col-md-8"> 
+              <div class="form-group">
+                  <input type="text" name="lastname" id="lastname" [(ngModel)]="er.lastname" class="form-control" placeholder="Last Name">
+              </div>
+          </div>
+      </div>
+      <div class="col-xs-4 col-sm-6 col-md-8">
+          <div class="form-group" > <p> Gender
+            <select name="gender" id="gender"  [(ngModel)]="er.gender">            
+                    <option [ngValue]="undefined">--Select--</option>    
+                   <option *ngFor="let gender of genders" [ngValue]="gender.name">{{gender.name}}</option>
+                </select>
+          </div>
+      </div>
+      <br>
+      <p>
+
+     <br>
+      <div class="col-xs-2 col-sm-3 col-md-6">
+          <div class="form-group">
+              <p>Date of Birth</p>
+              </div>
+               <input type="date" class="form-control" name="dob" id="dob" [(ngModel)]="er.dob"  placeholder="Date of Birth">
+          <br>
+          </div>
+      <div class="control-label col-md-8 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <p class="control-label col-md-4 col-sm-3 col-xs-8"> Country </p>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <!-- <select class="registration form-control2 col-md-7 col-xs-12 " name="Country" [(ngModel)]="er.country"  (change)="getCountry(er.country)">
+            <option [ngValue]="undefined" disabled class="sel">Select Country</option>
+            <option  *ngFor="let country of country1"  [ngValue]="country">{{country.countryname}}</option>
+          </select> -->
+
+          <select class="registration form-control2 " name="country" [(ngModel)]="er.country" (change)="getCountry(er.country)">
+            <option [ngValue]="undefined" disabled class="sel">Select Country</option>
+            <option  *ngFor="let country of country1" [ngValue]="country">{{country.name}}</option>
+          </select>
+          
+        </div>
+      </div>
+    <div class="form-group">
+      <p class="control-label col-md-4 col-sm-3 col-xs-12"> State </p>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+          <!-- <select class="registration form-control2 col-md-7 col-xs-12 " name="state" [(ngModel)]="er.state" (change)="getState(er.state)">
+            <option [ngValue]="undefined" disabled class="sel">Select State</option> 
+         <option *ngFor="let state of selectedStates" [ngValue]="state">{{state.statename}}</option>
+        </select> -->
+
+        <select class="registration form-control2 " name="state" [(ngModel)]="er.state"(change)="getState(er.state)">
+
+          <option [ngValue]="undefined" disabled class="sel">Select State</option>
+          <option  *ngFor="let state of selectedStates" [ngValue]="state">{{state.name}}</option>
+
+        </select>
+      </div>
+    </div>  
+  <div class="form-group">
+    <p class="control-label col-md-4 col-sm-3 col-xs-12"> City </p>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <!-- <select class="registration form-control2 col-md-7 col-xs-12 " name="city" [(ngModel)]="er.city">
+        <option [ngValue]="undefined" disabled class="sel" >Select City</option>
+        <option  *ngFor="let city of selectedCities" [ngValue]="city.cityname">{{city.cityname}}</option>
+      </select> -->
+
+      <select class="registration form-control2 " name="city" [(ngModel)]="er.city">
+
+        <option [ngValue]="undefined" disabled class="sel" >Select City</option>
+        <option  *ngFor="let city of selectedCities" [ngValue]="city.name">{{city.name}}</option>
+
+      </select>
+   
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-8">
+    </div>
+    <div class="form-group">
+<input type="Address" name="employeetype" id="employeetype" [(ngModel)]="er.employeetype" class="form-control input-sm" placeholder="Employee Type">
+</div>
+    <div class="form-group">
+          <input type="address" name="address" id="address" class="form-control input-sm" [(ngModel)]="er.address" placeholder="Address">
+      </div>
+    <div class="form-group">
+          <input type="email" name="email" id="email" [(ngModel)]="er.email"  class="form-control input-sm" placeholder="Email">
+      </div>
+     <div class="form-group">
+          <input type="email" name="yoc" id="yoc" [(ngModel)]="er.yoc" class="form-control input-sm" placeholder="Year of Contract">
+      </div>
+     <div class="form-group">
+        <input type="password" name="password"  [(ngModel)]="er.password" class="form-control input-sm" placeholder="password">
+     </div>
+     <div class="form-group">
+        <input type="text" name="mobile" [(ngModel)]="er.mobile" class="form-control input-sm" maxlength="10" placeholder="Mobile Number"> 
+     </div>
+    </div>
+      <div class="form-group col-sm-8 col-sm-offset-2">
+ <button class="fmmBtn log global" style="width: 100px; padding: 10px; margin-right: 16px;" type="submit">Register</button> 
+ <button class="fmmBtn log global" style="width: 100px; padding: 10px;">Reset</button>
+ 
+</div>
+</form>

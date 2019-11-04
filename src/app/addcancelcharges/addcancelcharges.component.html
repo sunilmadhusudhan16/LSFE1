@@ -1,0 +1,87 @@
+<app-nav></app-nav>
+   <div class="container-fluid page-body-wrapper">
+    <app-sidenav></app-sidenav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader">
+          <h1 style="text-align:Center;"> Add Cancel </h1>
+        </div>
+        <br>
+        <div class="x_panel">
+          <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+           
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Country</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  <select class="registration form-control2 " name="country" [(ngModel)]="cancel.country" (change)="getCountry(cancel.country)">
+                    <option [ngValue]="undefined" disabled class="sel">Select Country</option>
+                    <option  *ngFor="let country of country1" [ngValue]="country">{{country.name}}</option>
+                  </select>
+                  
+                  <!-- <input class="registration form-control2 " required [(ngModel)]="cancel.country" type="text" id="cancel"  name="cancelfare" > -->
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">State</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  <select class="registration form-control2 " name="state" [(ngModel)]="cancel.state"  (change)="getState(cancel.state)">
+                   
+                    <option [ngValue]="undefined" disabled class="sel">Select State</option>
+                    <option  *ngFor="let state of selectedStates" [ngValue]="state">{{state.name}}</option>
+      
+                  </select>
+                  <!-- <input class="registration form-control2 " required [(ngModel)]="cancel.state" type="text" id="cancel"  name="cancelfare" > -->
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">City</h4>
+                <div class="col-md-4 inputGroupContainer">
+                    <select class="registration form-control2 " name="city" [(ngModel)]="cancel.city">
+                       
+                        <option [ngValue]="undefined" disabled class="sel" >Select City</option>
+                        <option  *ngFor="let city of selectedCities" [ngValue]="city.name">{{city.name}}</option>
+               
+                      </select>
+                  
+                  <!-- <input class="registration form-control2 " required [(ngModel)]="cancel.city" type="text" id="cancel"  name="cancelfare" > -->
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Min Cancellation charges</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  
+                  <input class="registration form-control2 " required [(ngModel)]="cancel.minCancelCharges" type="text" id="cancel"  name="minCancelCharges" >
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <h4 class="col-md-4 control-label">Cancellation charges After 15(min)</h4>
+                <div class="col-md-4 inputGroupContainer">
+                  
+                  <input class="registration form-control2 " required [(ngModel)]="cancel.cancelChargesAfter15min" type="text" id="cancel"  name="cancelChargesAfter15min" >
+                </div>
+              </div>
+
+              
+              <br>
+              <div class="form-group">
+                <p class="col-md-5 control-label"></p>
+                <div class="col-md-4">
+                  
+                  <button type="submit" class="btn1 btn-success"  >Submit</button>&nbsp;
+
+                  <button  class="btn1 btn-round btn-warning" routerLink="/bkcan" >Back</button>
+               
+              </div>
+            </div>
+            
+          
+          </form>
+       
+      </div>
+    </div>
+  </div>
+</div>

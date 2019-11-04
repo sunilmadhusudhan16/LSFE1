@@ -1,0 +1,35 @@
+.firstMaincard{
+    /* backgroun: src("../../assets/images/chickenBanner.jpg"); */
+    /* background-image: url("../../../assets/images/chickenBanner.jpg") */
+    background-color:white;
+    color: black;
+    /* height: relative; */
+}
+.card {
+    /* max-width: 350px; */
+    height:200px;
+    padding-left:20px;
+    margin:10px 10px 10px 10px;
+  }
+.card:hover{
+    background-color: rgba(9, 24, 228, 0.151);
+    /* height:210px; */
+}
+  mat-card-title{
+      font-size: 35px;
+      /* text-decoration: underline; */
+  }
+  .viewButton{
+      float: right;
+  }
+ .fa-inr
+ {
+     font-size: 20px;
+     margin-left: 25%;
+
+ }
+ .price
+ {
+    font-size: 20px;
+    /* margin-left: 25%; */
+}

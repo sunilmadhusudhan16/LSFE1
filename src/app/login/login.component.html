@@ -1,0 +1,57 @@
+<app-header></app-header>
+ <section class="pageHeader global">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12"></div>
+      </div>
+    </div>
+  
+      <section class="loginform global mt20">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-4" >
+              <form>
+                <div class="form-group">
+                  <input type="text" name="email/phone" placeholder="Email/mobile" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="" class="form-control" placeholder="password" >
+                </div>
+                <div class="form-group ">
+                  <a><button class="fmmBtn log global" data-toggle="modal" data-target="#myModal">SignIn</button></a>
+                  <span><button class="fmmBtn log global">Signup</button></span>
+                </div>
+                <a href="">Forgot Password</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+  </section>
+ 
+
+  <div class="modal fade" id="myModal" role="dialog" ng-show=" loginDisable" aria-hidden="false">
+    <div class="modal-dialog">  
+      <div style="margin-top: 95px;" class="modal-content">
+        <div class="modal-header">
+          <h4>Login Details</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+      <div class="modal-body">
+        <div class="x_content">
+        <br>
+        <form data-parsley-validate="" class="form-horizontal form-label-left " (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <div class="col-md-12 col-xs-12 col-md-offset-1">
+              <button style="border-radius: 30px;" class="btn-round btn1 tableButton"  type="button" routerLink="/admin">Admin</button>
+              <button style="border-radius: 30px;" class="btn-round btn1 tableButton btn-info"  type="button" routerLink="/tieups">TieUps</button>
+              <button style="border-radius: 30px; width:150px; text-align: center; " class="btn1 btn-round btn-warning" type="buuton" routerLink="/ccadmin">Collection Center</button>
+              <button style="border-radius: 30px; text-align: center;  " class="btn1 btn-round btn-danger" type="buuton" routerLink="/customerDashboard">Customer</button>
+              <button style="border-radius: 30px; text-align: center;  " class="btn1 btn-round btn-primary" type="buuton" routerLink="/mark">Marketing</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

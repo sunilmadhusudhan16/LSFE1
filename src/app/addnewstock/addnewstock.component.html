@@ -1,0 +1,68 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-ccsidenav></app-ccsidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="x_panel tableborder tableHeader">
+        <h1 style="text-align:Center;"> Add Stock  </h1>
+      </div>
+      <br>
+      <div class="x_panel">
+        <form  class="form-horizontal" (ngSubmit)="onSubmit()">
+         
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Item type</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.itemtype" type="text" id="role"  name="stockcategory" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label" >Item Category</h4>
+              <div class="col-md-4 inputGroupContainer">
+              <select  class="registration form-control2"  [(ngModel)]="role.itemcategory" name="stocktype"  class="registration form-control2 ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+                <option [ngValue]="undefined" disabled class="sel" >Select Catagory</option>
+                <option [value]="dlistl.dlist" *ngFor="let dlistl of drops | async">{{dlistl.stockcategory}}</option>
+                            
+              </select>
+            </div>
+          </div>
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Qualitity</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.quantity" type="text" id="role"  name="stockid" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Quality</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.quality" type="text" id="role"  name="priceperkg" >
+              </div>
+            </div>
+            <div class="form-group">
+              <h4 class="col-md-4 control-label">Price</h4>
+              <div class="col-md-4 inputGroupContainer">
+                
+                <input class="registration form-control2 " required [(ngModel)]="role.price" type="text" id="role"  name="priceperkg" >
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <p class="col-md-5 control-label"></p>
+              <div class="col-md-4">
+                <!-- <button style="border-radius: 30px;" type="submit" class="btn1 btn-round btn-success">Submit </button> -->
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a routerLink="/back">
+                <button style="border-radius: 30px;" class="btn1 btn-round btn-warning">Back</button>
+              </a>
+              </div>
+            </div>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>

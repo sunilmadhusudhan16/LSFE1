@@ -1,0 +1,73 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+  <app-tpsidenav></app-tpsidenav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+        <div class="x_panel tableborder tableHeader ">
+        
+            <br>
+  
+          <h3 style="text-align: center">
+              Insurance management Details
+          </h3>
+  </div>
+  <div class="x_panel" id="myDIV">
+    <div class="col-xs-12">
+       
+             <div *ngFor="let insu of insurans">
+                <label>Company Name:</label>
+                 {{insu.companyname}}
+                 <br>
+                 <label>Gender:</label>
+                 {{insu.gender}}
+                 <br>
+                 <label>Country:</label>
+                 {{insu.country}}
+                 <br>
+                 <label>State:</label>
+                 {{insu.state}}
+                 <br>
+                 <label>City:</label>
+                 {{insu.city}}
+                 <br>
+                 <label>Mobile Number:</label>
+                 {{insu.mobilenum}}
+                 <br>
+                 <label>Alternative Number:</label>
+                 {{insu.alternativenum}}
+
+                 <br>
+                 <label>Year Of Contract:</label>
+                 {{insu.yearofcontract}}
+                 <br>
+                 <label>Email Id:</label>
+                 {{insu.emailid}}
+                 <br>
+                 <label>Password:</label>
+                 {{insu.password}}
+
+                 <br>
+                 <label>PinCode:</label>
+                 {{insu.pincode}}
+                 <br>
+                 <label>Licence Number:</label>
+                 {{insu.licencenumber}}
+                 <br>
+                 <label>Proprietor Name:</label>
+                 {{insu.proprietorname}}
+
+                 <br>
+                 <label>GST Number:</label>
+                 {{insu.gstnumber}}
+                 <br>
+                 <label>Active:</label>
+                 {{insu.active}}
+
+             </div>
+
+        <!-- </div> -->
+</div>
+</div>
+</div>
+</div>
+
